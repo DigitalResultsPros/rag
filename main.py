@@ -6,7 +6,7 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.vectorstores import FAISS
 from langchain_ollama import OllamaEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.llms import Ollama
+from langchain_ollama import OllamaLLM
 from langchain.chains import RetrievalQA
 
 # Global state
@@ -35,7 +35,7 @@ def process_pdf(file):
     vectorstore = FAISS.from_documents(docs, embeddings)
 
     # Load Ollama LLM
-    llm = Ollama(model="llama3.1", base_url="http://localhost:11434")
+    llm = OllamaLLM(model="llama3.1", base_url="http://localhost:11434")
 
     # Create the RetrievalQA chain
     qa_chain = RetrievalQA.from_chain_type(
@@ -52,7 +52,7 @@ def ask_question(query):
     if qa_chain is None:
         return "❌ Please upload and process a PDF first.", ""
 
-    result = qa_chain(query)
+    result = qa_chain.invoke(query)
     answer = result["result"]
     sources = result["source_documents"]
 
