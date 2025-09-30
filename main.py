@@ -34,16 +34,8 @@ def process_pdf(file):
     embeddings = OllamaEmbeddings(model="nomic-embed-text", base_url="http://localhost:11434")
     vectorstore = FAISS.from_documents(docs, embeddings)
 
-    # Embed using HuggingFace (alternative)
-    # from langchain.embeddings import HuggingFaceEmbeddings
-    # embeddings = HuggingFaceEmbeddings(model_name="nomic-ai/nomic-embed-text-v1.5"
-
     # Load Ollama LLM
     llm = Ollama(model="llama3.1", base_url="http://localhost:11434")
-
-    # Load LM Studio LLM (alternative)
-    # from langchain_community.llms import LMStudio
-    # llm = LMStudio(model_name="llama-3.2-3b-instruct", base_url="http://localhost:1234/v1")
 
     # Create the RetrievalQA chain
     qa_chain = RetrievalQA.from_chain_type(
