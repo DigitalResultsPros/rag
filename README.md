@@ -8,7 +8,7 @@ A powerful Retrieval-Augmented Generation (RAG) system that allows you to ask qu
 - **💬 Text Queries**: Ask questions about your documents via text input
 - **🎤 Voice Queries**: Use voice input with automatic transcription via OpenAI Whisper
 - **🔍 Source Attribution**: View exact excerpts from the PDF that support each answer
-- **🏠 Local AI Models**: All processing done locally using Ollama or LM Studio and Whisper
+- **🏠 Local AI Models**: All processing done locally using Ollama and Whisper
 - **🌐 Web Interface**: User-friendly Gradio interface for easy interaction
 
 ## Technical Requirements
